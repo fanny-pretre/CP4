@@ -10,6 +10,11 @@ const itemsRouter = require("./items/router");
 
 router.use("/items", itemsRouter);
 
+// Auths
+const authsRouter = require("./auths/router");
+
+router.use("/auths", authsRouter);
+
 // Roles
 const rolesRouter = require("./roles/router");
 
