@@ -10,6 +10,36 @@ const itemsRouter = require("./items/router");
 
 router.use("/items", itemsRouter);
 
+// Roles
+const rolesRouter = require("./roles/router");
+
+router.use("/roles", rolesRouter);
+
+// Races
+const racesRouter = require("./races/router");
+
+router.use("/races", racesRouter);
+
+// Healths
+const healthsRouter = require("./healths/router");
+
+router.use("/healths", healthsRouter);
+
+// Cohabitations
+const cohabitationsRouter = require("./cohabitations/router");
+
+router.use("/cohabitations", cohabitationsRouter);
+
+// Users
+const usersRouter = require("./users/router");
+
+router.use("/users", usersRouter);
+
+// Animals
+const animalsRouter = require("./animals/router");
+
+router.use("/animals", animalsRouter);
+
 /* ************************************************************************* */
 
 module.exports = router;

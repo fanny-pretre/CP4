@@ -42,6 +42,7 @@ create table user (
 
 CREATE TABLE animal (
   id INT unsigned PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  image VARCHAR(255) NOT NULL,
   name VARCHAR(255) NOT NULL,
   age INT,
   gender CHAR(1),
@@ -59,6 +60,32 @@ CREATE TABLE animal (
   FOREIGN KEY(cohabitation_id) REFERENCES cohabitation(id) ON DELETE CASCADE,
   FOREIGN KEY(user_id) REFERENCES user(id) ON DELETE CASCADE
 );
+
+INSERT INTO role (name) VALUES
+('Admin'),
+('Utilisateur');
+
+INSERT INTO race (name) VALUES
+('Hollandais'),
+('Géant des Flandres'),
+('Nain bélier');
+
+INSERT INTO health (sterilisation, vaccination, identification, decontamination, background, observations) VALUES
+(1, 1, 1, 1, 'Aucun problème de santé connu', 'En pleine forme et actif'),
+(1, 1, 1, 1, 'Allergique à certaines plantes', 'Nécessite des visites régulières chez le vétérinaire');
+
+INSERT INTO cohabitation (human, cat, dog) VALUES
+('+ (en cours)', '-', '-'),
+('+++', 'ok', 'ok');
+
+INSERT INTO user (firstname, lastname, email, password, telephone, address, zip_code, city, role_id) VALUES
+('Jean', 'Dupont', 'jean@example.com', 'Azerty123@', '123-456-7890', '123 Rue Principale', '12345', 'Ville A', 1),
+('Marie', 'Martin', 'marie@example.com', 'Azerty123@', '987-654-3210', '456 Rue Elm', '54321', 'Ville B', 2);
+
+INSERT INTO animal (name, image, age, gender, story, coming_date, status, personality, adoption_date, race_id, health_id, cohabitation_id, user_id) VALUES
+('Panpan', 'https://botanic-botanic-storage.omn.proximis.com/Imagestorage/images/2560/1600/6540c9bfad436_lapin_dresse_sur_ses_pattes_oreilles.jpg', 3, 'M', 'Trouvé abandonné', '2023-01-15', 'Disponible', 'Amical et joueur', NULL, 1, 1, 1, 1),
+('Fleur', 'https://media.4-paws.org/e/8/2/7/e827506a0aaf548b6d7bede74f5e9bc4997d981a/Kaninchen%20im%20Freigehege%20%282%29-4440x3072.jpg', 2, 'F', 'Récupéré d''un refuge', '2023-02-20', 'Adopté', 'Affectueux et énergique', '2023-03-01', 2, 2, 2, 2);
+
 
 
 
