@@ -1,19 +1,58 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import Cookies from "js-cookie";
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { jwtDecode } from "jwt-decode";
 import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 function Nav() {
+  const { setAuth } = useAuth();
+
+  const authData = Cookies.get("authData");
+  let role = null;
+  let sub = null;
+
+  if (authData) {
+    const authDecoded = jwtDecode(authData);
+    role = authDecoded.role;
+    sub = authDecoded.sub;
+  }
+
+  const clearCookies = () => {
+    Cookies.remove("authData");
+    setAuth(null);
+  };
+
   return (
     <div className="header">
       <div className="header-top-bar">
         <div className="cta-buttons-wrapper">
-          <Link to="/register">
-            <button type="button">Inscription </button>
-          </Link>
-          <Link to="/login">
-            {" "}
-            <button type="button" className="btn-secondary">
-              Connexion{" "}
-            </button>
-          </Link>
+          {!sub ? (
+            <>
+              <Link to="/register">
+                <button type="button">Inscription</button>
+              </Link>
+              <Link to="/login">
+                <button type="button" className="btn-secondary">
+                  Connexion
+                </button>
+              </Link>
+            </>
+          ) : (
+            <Link to="/" onClick={clearCookies}>
+              <button type="button" className="btn-secondary">
+                Déconnexion
+              </button>
+            </Link>
+          )}
+
+          {sub && role !== 2 && (
+            <Link to="/administrateur">
+              <button type="button" className="btn-secondary">
+                Admin
+              </button>
+            </Link>
+          )}
         </div>
       </div>
 
