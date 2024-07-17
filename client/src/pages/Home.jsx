@@ -1,4 +1,6 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import Cookies from "js-cookie";
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { jwtDecode } from "jwt-decode";
 
 function Home() {
