@@ -10,14 +10,35 @@ class AnimalRepository extends AbstractRepository {
   // The C of CRUD - Create operation
 
   async create(animal) {
-    // Execute the SQL INSERT query to add a new animal to the "animal" table
-    const [result] = await this.database.query(
-      `insert into ${this.table} (title, user_id) values (?, ?)`,
-      [animal.title, animal.user_id]
-    );
+    try {
+      // Execute the SQL INSERT query to add a new animal to the "animal" table
+      const query = `
+        INSERT INTO ${this.table} (
+          image, name, age, gender, story, coming_date, status,
+          personality, race_id, health_id, cohabitation_id 
+        ) VALUES (?, ?, ?, ?, ?,  ?, ?, ?, ?, 1, 1)
+      `;
 
-    // Return the ID of the newly inserted animal
-    return result.insertId;
+      const [result] = await this.database.query(query, [
+        animal.image,
+        animal.name,
+        animal.age,
+        animal.gender,
+        animal.story,
+        animal.coming_date,
+        animal.status,
+        animal.personality,
+        animal.race_id,
+        animal.health_id,
+        animal.cohabitation_id,
+      ]);
+
+      // Return the ID of the newly inserted animal
+      return result.insertId;
+    } catch (error) {
+      // Handle any errors that occur during the database operation
+      throw new Error(`Error inserting animal: ${error.message}`);
+    }
   }
 
   // The Rs of CRUD - Read operations

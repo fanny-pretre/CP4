@@ -10,6 +10,11 @@ import Adopted from "./pages/Adopted";
 import Adoption from "./pages/Adoption";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Admin from "./pages/Admin/Admin";
+import AdminPensionnaires from "./pages/Admin/AdminPensionnaires";
+import AdminUtilisateurs from "./pages/Admin/AdminUtilisateurs";
+import AdminContacts from "./pages/Admin/AdminContacts";
+import Profil from "./pages/Profil/Profil";
 
 import App from "./App";
 
@@ -37,6 +42,26 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/admin",
+        element: <Admin />,
+      },
+      {
+        path: "/admin/pensionnaires",
+        element: <AdminPensionnaires />,
+      },
+      {
+        path: "/admin/utilisateurs",
+        element: <AdminUtilisateurs />,
+      },
+      {
+        path: "/admin/contacts",
+        element: <AdminContacts />,
+      },
+      {
+        path: "/profil",
+        element: <Profil />,
       },
     ],
   },

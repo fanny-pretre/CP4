@@ -47,7 +47,7 @@ function Nav() {
           )}
 
           {sub && role !== 2 && (
-            <Link to="/administrateur">
+            <Link to="/admin">
               <button type="button" className="btn-secondary">
                 Admin
               </button>

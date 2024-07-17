@@ -53,7 +53,7 @@ CREATE TABLE animal (
   race_id INT UNSIGNED NOT NULL,  
   health_id INT UNSIGNED NOT NULL, 
   cohabitation_id INT UNSIGNED NOT NULL, 
-  user_id INT UNSIGNED NOT NULL,
+  user_id INT UNSIGNED,
   FOREIGN KEY (race_id) REFERENCES race(id) ON DELETE CASCADE,
   FOREIGN KEY (health_id) REFERENCES health(id) ON DELETE CASCADE,
   FOREIGN KEY (cohabitation_id) REFERENCES cohabitation(id) ON DELETE CASCADE,
