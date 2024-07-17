@@ -35,7 +35,7 @@ function Connexion() {
       if (response.status === 200) {
         const authData = await Cookies.get("authData");
         setAuth(authData);
-        navigate("/");
+        navigate("/admin");
       } else {
         // Log des détails de la réponse en cas d'échec
         console.info(response);
@@ -71,7 +71,7 @@ function Connexion() {
 
         <button type="submit">Me connecter</button>
       </form>
-      <Link to="/inscription">Pas encore de compte</Link>
+      <Link to="/register">Pas encore de compte</Link>
     </section>
   );
 }

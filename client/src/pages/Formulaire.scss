@@ -1,0 +1,52 @@
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group-50-50 {
+  display: flex;
+  gap: 2rem;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group-checkbox {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: center;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+input {
+  height: 2rem;
+}
+
+a {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  text-decoration: none;
+  color: black;
+}
+
+details {
+  margin: 0.5rem 0;
+}
+
+.form-details {
+  margin-top: 1rem;
+}

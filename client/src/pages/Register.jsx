@@ -74,7 +74,7 @@ function Inscription() {
 
   return (
     <section>
-      <h1>Inscrivez-vous pour en savoir plus </h1>
+      <h1>Inscription </h1>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* eslint-disable react/jsx-props-no-spreading */}
@@ -139,43 +139,42 @@ function Inscription() {
                 "Êtes-vous sûr d'avoir écrit correctement votre email ?"}
             </p>
           )}
-          <div className="form-group">
-            <label htmlFor="password">Mot de passe</label>{" "}
-            <input
-              type="password"
-              id="password"
-              {...register("password", {
-                required: true,
-                validate: validatePassword,
-              })}
-              onBlur={() => trigger("password")}
-            />
-            {errors.password && (
-              <p role="alert">
-                {errors.password.type === "required" &&
-                  "Le mot de passe est obligatoire"}
-                {errors.password.type === "validate" && errors.password.message}
-              </p>
-            )}
-          </div>
-          <div className="form-group">
-            <label htmlFor="confirmPassword">Confirmer le mot de passe</label>
-            <input
-              type="password"
-              id="confirmPassword"
-              {...register("confirmPassword", {
-                required: "La confirmation du mot de passe est obligatoire",
-                validate: (value) =>
-                  value === password ||
-                  "Les mots de passe ne correspondent pas",
-              })}
-              onBlur={() => trigger("confirmPassword")}
-            />
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Mot de passe</label>{" "}
+          <input
+            type="password"
+            id="password"
+            {...register("password", {
+              required: true,
+              validate: validatePassword,
+            })}
+            onBlur={() => trigger("password")}
+          />
+          {errors.password && (
+            <p role="alert">
+              {errors.password.type === "required" &&
+                "Le mot de passe est obligatoire"}
+              {errors.password.type === "validate" && errors.password.message}
+            </p>
+          )}
+        </div>
+        <div className="form-group">
+          <label htmlFor="confirmPassword">Confirmer le mot de passe</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            {...register("confirmPassword", {
+              required: "La confirmation du mot de passe est obligatoire",
+              validate: (value) =>
+                value === password || "Les mots de passe ne correspondent pas",
+            })}
+            onBlur={() => trigger("confirmPassword")}
+          />
 
-            {errors.confirmPassword && (
-              <p role="alert">{errors.confirmPassword.message}</p>
-            )}
-          </div>
+          {errors.confirmPassword && (
+            <p role="alert">{errors.confirmPassword.message}</p>
+          )}
         </div>
 
         <div className="form-group">
@@ -233,30 +232,30 @@ function Inscription() {
               </p>
             )}
           </div>
-          <div className="form-group">
-            <label htmlFor="telephone">Téléphone</label>
-            <input
-              type="telephone"
-              id="telephone"
-              {...register("telephone", {
-                required: true,
-              })}
-              // Validation au moment de la perte du focus
-              onBlur={() => trigger("telephone")}
-            />
+        </div>
+        <div className="form-group">
+          <label htmlFor="telephone">Téléphone</label>
+          <input
+            type="telephone"
+            id="telephone"
+            {...register("telephone", {
+              required: true,
+            })}
+            // Validation au moment de la perte du focus
+            onBlur={() => trigger("telephone")}
+          />
 
-            {errors.telephone && (
-              <p role="alert">
-                {errors.telephone.type === "required" &&
-                  "Le téléphone est obligatoire"}
-              </p>
-            )}
-          </div>
+          {errors.telephone && (
+            <p role="alert">
+              {errors.telephone.type === "required" &&
+                "Le téléphone est obligatoire"}
+            </p>
+          )}
         </div>
         <button type="submit">Créer mon compte</button>
       </form>
 
-      <Link to="/connexion"> J'ai déjà un compte </Link>
+      <Link to="/login"> J'ai déjà un compte </Link>
     </section>
   );
 }

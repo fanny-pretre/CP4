@@ -1,0 +1,28 @@
+.admin-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.admin-list-items {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  padding: 0.5rem;
+}
+
+admin-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-item {
+  display: flex;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  width: 90vw;
+  padding: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+  img {
+    width: 60px;
+    height: 60px;
+  }
+}

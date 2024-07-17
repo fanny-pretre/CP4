@@ -77,10 +77,10 @@ function AdminPensionnairesEdit() {
 
   return (
     <div>
-      <h1>Edit Animal</h1>
+      <h1>Editer {formData.name}</h1>
       <form onSubmit={handleSubmit}>
-        <label>
-          Image URL:
+        <div className="form-group">
+          <label htmlFor="ImageURL">URL de l'image</label>
           <input
             type="text"
             name="image"
@@ -88,10 +88,9 @@ function AdminPensionnairesEdit() {
             onChange={handleChange}
             required
           />
-        </label>
-        <br />
-        <label>
-          Name:
+        </div>
+        <div className="form-group">
+          <label htmlFor="name">Nom de l'animal</label>
           <input
             type="text"
             name="name"
@@ -99,39 +98,42 @@ function AdminPensionnairesEdit() {
             onChange={handleChange}
             required
           />
-        </label>
-        <br />
-        <label>
-          Age:
-          <input
-            type="number"
-            name="age"
-            value={formData.age}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Gender:
-          <select name="gender" value={formData.gender} onChange={handleChange}>
-            <option value="">Select Gender</option>
-            <option value="M">Male</option>
-            <option value="F">Female</option>
-          </select>
-        </label>
-        <br />
-        <label>
-          Story:
+        </div>
+        <div className="form-group-50-50 ">
+          <div className="form-group">
+            <label htmlFor="age">Âge</label>
+            <input
+              type="number"
+              name="age"
+              value={formData.age}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="gender">Genre </label>
+            <select
+              name="gender"
+              value={formData.gender}
+              onChange={handleChange}
+            >
+              <option value="">Select Gender</option>
+              <option value="M">Male</option>
+              <option value="F">Female</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="story"> Histoire </label>
           <textarea
             name="story"
             value={formData.story}
             onChange={handleChange}
           />
-        </label>
-        <br />
-        <br />
-        <label>
-          Status:
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="status">Statut </label>
           <input
             type="text"
             name="status"
@@ -139,10 +141,10 @@ function AdminPensionnairesEdit() {
             onChange={handleChange}
             required
           />
-        </label>
-        <br />
-        <label>
-          Personality:
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="personality">Personnalité </label>
           <input
             type="text"
             name="personality"
@@ -150,10 +152,10 @@ function AdminPensionnairesEdit() {
             onChange={handleChange}
             required
           />
-        </label>
-        <br />
-        <label>
-          Race:
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="race">Race </label>
           <select
             name="race_id"
             value={formData.race_id}
@@ -167,11 +169,10 @@ function AdminPensionnairesEdit() {
               </option>
             ))}
           </select>
-        </label>
-        <br />
-        <button type="submit">Update Animal</button>
-        <button type="button" onClick={handleDelete}>
-          Delete Animal
+        </div>
+        <button type="submit">Mettre à jour {formData.name}</button>
+        <button type="button" onClick={handleDelete} className="btn-secondary">
+          Supprimer {formData.name}
         </button>
       </form>
     </div>

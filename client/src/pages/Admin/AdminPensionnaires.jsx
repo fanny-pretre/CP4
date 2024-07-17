@@ -63,8 +63,6 @@ function AdminPensionnaires() {
     dog: "",
   });
 
-  console.info(formData);
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -115,225 +113,222 @@ function AdminPensionnaires() {
     <>
       <h1> Ajouter un pensionnaire </h1>
       <form onSubmit={handleSubmit}>
-        <details open>
+        <details>
           <summary> Informations </summary>
-          <label>
-            Image URL:
-            <input
-              type="text"
-              name="image"
-              value={formData.image}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <br />
-          <label>
-            Name:
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <br />
-          <label>
-            Age:
-            <input
-              type="number"
-              name="age"
-              value={formData.age}
-              onChange={handleChange}
-            />
-          </label>
-          <br />
-          <label>
-            Gender:
-            <select
-              name="gender"
-              value={formData.gender}
-              onChange={handleChange}
-            >
-              <option value="">Select Gender</option>
-              <option value="M">Male</option>
-              <option value="F">Female</option>
-            </select>
-          </label>
-          <br />
-          <label>
-            Story:
-            <textarea
-              name="story"
-              value={formData.story}
-              onChange={handleChange}
-            />
-          </label>
-          <br />
-          <label>
-            Coming Date:
-            <input
-              type="date"
-              name="coming_date"
-              value={formData.coming_date}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <br />
-          <label>
-            Status:
-            <select
-              name="status"
-              value={formData.status}
-              onChange={handleChange}
-              required
-            >
-              <option value="">Select Status</option>
-              <option value="adopté">Adopté</option>
-              <option value="à l'adoption">À l'adoption</option>
-            </select>
-          </label>
-          <br />
-          <label>
-            Personality:
-            <input
-              type="text"
-              name="personality"
-              value={formData.personality}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <br />
+          <div className="form-details">
+            <div className="form-group">
+              <label htmlFor="ImageURL">URL de l'image</label>
+              <input
+                type="text"
+                name="image"
+                value={formData.image}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="name">Nom de l'animal</label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-group-50-50 ">
+              <div className="form-group">
+                <label htmlFor="age">Âge</label>
+                <input
+                  type="number"
+                  name="age"
+                  value={formData.age}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="gender">Genre </label>
+                <select
+                  name="gender"
+                  value={formData.gender}
+                  onChange={handleChange}
+                >
+                  <option value="">Choisissez le genre</option>
+                  <option value="M">Mâle</option>
+                  <option value="F">Femelle</option>
+                </select>
+              </div>
+            </div>
 
-          <label>
-            Race:
-            <select
-              name="race_id"
-              value={formData.race_id}
-              onChange={handleChange}
-              required
-            >
-              <option value="">Select Race</option>
-              {races.map((race) => (
-                <option key={race.id} value={race.id}>
-                  {race.name}
-                </option>
-              ))}
-            </select>
-          </label>
-          <br />
+            <div className="form-group">
+              <label htmlFor="story"> Histoire </label>
+              <textarea
+                name="story"
+                value={formData.story}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="arrival-date">Date d'arrivée </label>
+              <input
+                type="date"
+                name="coming_date"
+                value={formData.coming_date}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="status">Statut </label>
+              <select
+                name="status"
+                value={formData.status}
+                onChange={handleChange}
+                required
+              >
+                <option value="">Sélectionnez un statut</option>
+                <option value="adopté">Adopté</option>
+                <option value="à l'adoption">À l'adoption</option>
+              </select>
+            </div>
+            <div className="form-group">
+              <label htmlFor="personality">Personnalité </label>
+              <input
+                type="text"
+                name="personality"
+                value={formData.personality}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="race">Race </label>
+              <select
+                name="race_id"
+                value={formData.race_id}
+                onChange={handleChange}
+                required
+              >
+                <option value="">Choisissez une race</option>
+                {races.map((race) => (
+                  <option key={race.id} value={race.id}>
+                    {race.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
         </details>
         <details>
           <summary> Santé </summary>
-          <label>
-            Sterilisation:
-            <input
-              type="checkbox"
-              name="sterilisation"
-              checked={formData.sterilisation}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Vaccination:
-            <input
-              type="checkbox"
-              name="vaccination"
-              checked={formData.vaccination}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Identification:
-            <input
-              type="checkbox"
-              name="identification"
-              checked={formData.identification}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Decontamination:
-            <input
-              type="checkbox"
-              name="decontamination"
-              checked={formData.decontamination}
-              onChange={handleChange}
-            />
-          </label>
-          <br />
-          <label>
-            Background:
-            <textarea
-              name="background"
-              value={formData.background}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Observations:
-            <input
-              name="observations"
-              type="text"
-              value={formData.observations}
-              onChange={handleChange}
-            />
-          </label>
+          <div className="form-details">
+            <div className="form-group-50-50">
+              <div className="form-group-checkbox">
+                <label htmlFor="sterilization">Sterilisation </label>
+                <input
+                  type="checkbox"
+                  name="sterilisation"
+                  checked={formData.sterilisation}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group-checkbox">
+                <label htmlFor="vaccination">Vaccination </label>
+                <input
+                  type="checkbox"
+                  name="vaccination"
+                  checked={formData.vaccination}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+            <div className="form-group-50-50">
+              <div className="form-group-checkbox">
+                <label htmlFor="identification">Identification </label>
+                <input
+                  type="checkbox"
+                  name="identification"
+                  checked={formData.identification}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group-checkbox">
+                <label htmlFor="decontamination">Decontamination </label>
+                <input
+                  type="checkbox"
+                  name="decontamination"
+                  checked={formData.decontamination}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+            <div className="form-group">
+              <label htmlFor="background">Passif </label>
+              <textarea
+                name="background"
+                value={formData.background}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="observations">Observations </label>
+              <input
+                name="observations"
+                type="text"
+                value={formData.observations}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
         </details>
         <details>
           <summary> Cohabitation </summary>
-          <label>
-            Humains :
-            <input
-              type="text"
-              name="human"
-              checked={formData.human}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Chats :
-            <input
-              type="text"
-              name="cat"
-              checked={formData.cat}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Chiens
-            <input
-              type="text"
-              name="dog"
-              checked={formData.dog}
-              onChange={handleChange}
-            />
-          </label>
+          <div className="form-details">
+            <div className="form-group">
+              <label htmlFor="humans">Humains </label>
+              <input
+                type="text"
+                name="human"
+                checked={formData.human}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="cats">Chats </label>
+              <input
+                type="text"
+                name="cat"
+                checked={formData.cat}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="dogs">Chiens </label>
+              <input
+                type="text"
+                name="dog"
+                checked={formData.dog}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
         </details>
-        <button type="submit">Add Animal</button>
+        <button type="submit">Ajouter ce pensionnaire</button>
       </form>
 
-      <h1> Les pensionnaires actuels</h1>
-      <ul className="admin-animals-list">
+      <h1> Liste des pensionnaires </h1>
+      <ul className="admin-list">
         {animals.map((animal) => (
           <Link to={`/admin/pensionnaires/edit/${animal.id}`} key={animal.id}>
-            <li className="admin-animals-item">
+            <li className="admin-item">
               <img src={animal.image} alt={`${animal.name}`} />
               <div className="admin-animals-infos">
-                <p>{animal.name}</p>
+                <h3>{animal.name}</h3>
                 <p> {animal.race ? animal.race.name : "Unknown"} </p>
               </div>
-              <svg
-                viewBox="0 0 24 24"
-                height={20}
-                width={20}
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="m4.481 15.659c-1.334 3.916-1.48 4.232-1.48 4.587 0 .528.46.749.749.749.352 0 .668-.137 4.574-1.492zm1.06-1.061 3.846 3.846 11.321-11.311c.195-.195.293-.45.293-.707 0-.255-.098-.51-.293-.706-.692-.691-1.742-1.74-2.435-2.432-.195-.195-.451-.293-.707-.293-.254 0-.51.098-.706.293z" />
-              </svg>
+              <button type="button"> Editer</button>
             </li>
           </Link>
         ))}
