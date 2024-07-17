@@ -12,6 +12,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Admin from "./pages/Admin/Admin";
 import AdminPensionnaires from "./pages/Admin/AdminPensionnaires";
+import AdminPensionnairesEdit from "./pages/Admin/AdminPensionnairesEdit";
 import AdminUtilisateurs from "./pages/Admin/AdminUtilisateurs";
 import AdminContacts from "./pages/Admin/AdminContacts";
 import Profil from "./pages/Profil/Profil";
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/pensionnaires",
         element: <AdminPensionnaires />,
+      },
+      {
+        path: "/admin/pensionnaires/edit/:id",
+        element: <AdminPensionnairesEdit />,
       },
       {
         path: "/admin/utilisateurs",

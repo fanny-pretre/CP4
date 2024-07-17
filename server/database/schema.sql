@@ -67,7 +67,24 @@ INSERT INTO role (name) VALUES
 INSERT INTO race (name) VALUES
 ('Hollandais'),
 ('Géant des Flandres'),
-('Nain bélier');
+('Nain bélier'),
+('Rex'),
+('Lapin bélier anglais'),
+('Lapin nain polonais'),
+('Lapin angora français'),
+('Lapin tête de lion'),
+('Lapin nain de couleur'),
+('Satin'),
+('Chinchilla'),
+('Lapin de Californie'),
+('Lapin de Champagne argenté'),
+('Lapin Hotot'),
+('Lapin de Nouvelle-Zélande'),
+('Lapin Flemish Giant'),
+('Lapin Américain'),
+('Lapin Britannia Petite'),
+('Lapin de Harlequin'),
+('Lapin de Thuringe');
 
 INSERT INTO health (sterilisation, vaccination, identification, decontamination, background, observations) VALUES
 (1, 1, 1, 1, 'Aucun problème de santé connu', 'En pleine forme et actif'),
@@ -82,8 +99,9 @@ INSERT INTO user (firstname, lastname, email, hashed_password, telephone, addres
 ('Marie', 'Martin', 'marie@example.com', '$argon2id$v=19$m=19456,t=2,p=1$YuTUonvj6kDs1gtygYcjpg$fDUntM/0R/oJyXsNf0z0r+jepTG58vMfGkf7Bsjwqig', '987-654-3210', '456 Rue Elm', '54321', 'Ville B', 2);
 
 INSERT INTO animal (name, image, age, gender, story, coming_date, status, personality, adoption_date, race_id, health_id, cohabitation_id, user_id) VALUES
-('Panpan', 'https://botanic-botanic-storage.omn.proximis.com/Imagestorage/images/2560/1600/6540c9bfad436_lapin_dresse_sur_ses_pattes_oreilles.jpg', 3, 'M', 'Trouvé abandonné', '2023-01-15', 'Disponible', 'Amical et joueur', NULL, 1, 1, 1, 1),
-('Fleur', 'https://media.4-paws.org/e/8/2/7/e827506a0aaf548b6d7bede74f5e9bc4997d981a/Kaninchen%20im%20Freigehege%20%282%29-4440x3072.jpg', 2, 'F', 'Récupéré d''un refuge', '2023-02-20', 'Adopté', 'Affectueux et énergique', '2023-03-01', 2, 2, 2, 2);
+('Panpan', 'https://botanic-botanic-storage.omn.proximis.com/Imagestorage/images/2560/1600/6540c9bfad436_lapin_dresse_sur_ses_pattes_oreilles.jpg', 3, 'M', 'Trouvé abandonné', '2023-01-15', 'à l''adoption', 'Amical et joueur', NULL, 1, 1, 1, 1),
+('Fleur', 'https://media.4-paws.org/e/8/2/7/e827506a0aaf548b6d7bede74f5e9bc4997d981a/Kaninchen%20im%20Freigehege%20%282%29-4440x3072.jpg', 2, 'F', 'Récupéré d''un refuge', '2023-02-20', 'adopté', 'Affectueux et énergique', '2023-03-01', 2, 2, 2, 2);
+
 
 
 

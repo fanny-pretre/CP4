@@ -15,8 +15,8 @@ class AnimalRepository extends AbstractRepository {
       const query = `
         INSERT INTO ${this.table} (
           image, name, age, gender, story, coming_date, status,
-          personality, race_id, health_id  
-        ) VALUES (?, ?, ?, ?, ?,  ?, ?, ?, ?, ?)
+          personality, race_id, health_id, cohabitation_id   
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       `;
 
       const [result] = await this.database.query(query, [
@@ -30,6 +30,7 @@ class AnimalRepository extends AbstractRepository {
         animal.personality,
         animal.race_id,
         animal.health_id,
+        animal.cohabitation_id,
       ]);
 
       // Return the ID of the newly inserted animal
@@ -61,19 +62,64 @@ class AnimalRepository extends AbstractRepository {
     return rows;
   }
 
-  // The U of CRUD - Update operation
-  // TODO: Implement the update operation to modify an existing animal
+  async readAllAdoptable() {
+    const [rows] = await this.database.query(
+      `SELECT * FROM ${this.table} WHERE status = ?`,
+      ["à l'adoption"]
+    );
 
-  // async update(animal) {
-  //   ...
-  // }
+    // Return the array of animals
+    return rows;
+  }
+
+  async readAllAdopted() {
+    const [rows] = await this.database.query(
+      `SELECT * FROM ${this.table} WHERE status = ?`,
+      ["adopté"]
+    );
+
+    // Return the array of animals
+    return rows;
+  }
+
+  async update(animal) {
+    // Execute the SQL UPDATE query to update a specific animal
+
+    const [result] = await this.database.query(
+      `update ${this.table} set image = ?, name = ?, age = ?, gender = ?, story = ?, status = ?, personality = ?, race_id = ? where id = ?`,
+
+      [
+        animal.image,
+        animal.name,
+        animal.age,
+        animal.gender,
+        animal.story,
+        animal.status,
+        animal.personality,
+        animal.race_id,
+        animal.id,
+      ]
+    );
+
+    // Return how many rows were affected
+    console.info(result.affectedRows);
+    return result.affectedRows;
+  }
 
   // The D of CRUD - Delete operation
-  // TODO: Implement the delete operation to remove an animal by its ID
+  async delete(id) {
+    // Execute the SQL DELETE query to delete a specific animal
 
-  // async delete(id) {
-  //   ...
-  // }
+    const [result] = await this.database.query(
+      `delete from ${this.table} where id = ?`,
+
+      [id]
+    );
+
+    // Return how many rows were affected
+
+    return result.affectedRows;
+  }
 }
 
 module.exports = AnimalRepository;

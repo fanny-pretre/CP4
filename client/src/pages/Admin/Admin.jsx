@@ -7,16 +7,20 @@ import { jwtDecode } from "jwt-decode";
 function Admin() {
   const authData = Cookies.get("authData");
   let firstname = null;
+  let lastname = null;
 
   if (authData) {
     const authDecoded = jwtDecode(authData);
     firstname = authDecoded.firstname;
+    lastname = authDecoded.lastname;
   }
 
   return (
     <section className="admin-Content">
       <div className="admin-Header">
-        <h1>Bonjour {firstname} !</h1>
+        <h1>
+          Bonjour {firstname} {lastname} !
+        </h1>
       </div>
 
       <nav className="admin-nav">

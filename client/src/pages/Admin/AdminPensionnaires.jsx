@@ -56,6 +56,11 @@ function AdminPensionnaires() {
     decontamination: false,
     background: "",
     observations: "",
+
+    // Information sur la cohabitation
+    human: "",
+    cat: "",
+    dog: "",
   });
 
   console.info(formData);
@@ -87,6 +92,9 @@ function AdminPensionnaires() {
         decontamination: false,
         background: "",
         observations: "",
+        human: "",
+        cat: "",
+        dog: "",
       });
     } catch (error) {
       console.error("Error adding animal:", error);
@@ -176,13 +184,16 @@ function AdminPensionnaires() {
           <br />
           <label>
             Status:
-            <input
-              type="text"
+            <select
               name="status"
               value={formData.status}
               onChange={handleChange}
               required
-            />
+            >
+              <option value="">Select Status</option>
+              <option value="adopté">Adopté</option>
+              <option value="à l'adoption">À l'adoption</option>
+            </select>
           </label>
           <br />
           <label>
@@ -268,6 +279,36 @@ function AdminPensionnaires() {
               name="observations"
               type="text"
               value={formData.observations}
+              onChange={handleChange}
+            />
+          </label>
+        </details>
+        <details>
+          <summary> Cohabitation </summary>
+          <label>
+            Humains :
+            <input
+              type="text"
+              name="human"
+              checked={formData.human}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            Chats :
+            <input
+              type="text"
+              name="cat"
+              checked={formData.cat}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            Chiens
+            <input
+              type="text"
+              name="dog"
+              checked={formData.dog}
               onChange={handleChange}
             />
           </label>
