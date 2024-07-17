@@ -8,6 +8,8 @@ import "./styles/index.scss";
 import Home from "./pages/Home";
 import Adopted from "./pages/Adopted";
 import Adoption from "./pages/Adoption";
+import AdoptionId from "./pages/AdoptionId";
+import AdoptedId from "./pages/AdoptedId";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Admin from "./pages/Admin/Admin";
@@ -32,8 +34,16 @@ const router = createBrowserRouter([
         element: <Adopted />,
       },
       {
+        path: "/adopted/:id",
+        element: <AdoptedId />,
+      },
+      {
         path: "/adoption",
         element: <Adoption />,
+      },
+      {
+        path: "/adoption/:id",
+        element: <AdoptionId />,
       },
 
       {

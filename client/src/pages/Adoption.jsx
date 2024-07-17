@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Adoption() {
   const [adoptableAnimals, setAdoptableAnimals] = useState([]);
@@ -33,6 +34,18 @@ function Adoption() {
 
   return (
     <>
+      <div className="previous">
+        <Link to="/">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path d="M17.026 22.957c10.957-11.421-2.326-20.865-10.384-13.309l2.464 2.352h-9.106v-8.947l2.232 2.229c14.794-13.203 31.51 7.051 14.794 17.675z" />
+          </svg>
+        </Link>
+      </div>
       <h1>Adoptez-les tous ! </h1>
       <ul className="animals-list">
         {adoptableAnimals.map((animal) => (
@@ -75,7 +88,13 @@ function Adoption() {
                 </div>
               </div>
               <div className="animal-button-section">
-                <button type="button"> En savoir plus sur {animal.name}</button>
+                <Link to={`/adoption/${animal.id}`}>
+                  {" "}
+                  <button type="button">
+                    {" "}
+                    En savoir plus sur {animal.name}
+                  </button>{" "}
+                </Link>
               </div>
             </div>
           </li>

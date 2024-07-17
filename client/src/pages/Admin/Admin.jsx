@@ -3,15 +3,23 @@ import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { jwtDecode } from "jwt-decode";
+import { useAuth } from "../../contexts/AuthContext";
 
 function Admin() {
   const authData = Cookies.get("authData");
   let firstname = null;
 
+  const { setAuth } = useAuth();
+
   if (authData) {
     const authDecoded = jwtDecode(authData);
     firstname = authDecoded.firstname;
   }
+
+  const clearCookies = () => {
+    Cookies.remove("authData");
+    setAuth(null);
+  };
 
   return (
     <section className="admin-Content">
@@ -60,6 +68,9 @@ function Admin() {
               <h3>Mes demandes de contact</h3>
               <p>Retrouvez ici toutes vos demandes de contact</p>
             </li>
+          </Link>
+          <Link to="/" onClick={clearCookies}>
+            <button type="button">Déconnexion</button>
           </Link>
         </ul>
       </nav>

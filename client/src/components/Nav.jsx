@@ -6,6 +6,8 @@ import { jwtDecode } from "jwt-decode";
 import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
+import Logo from "../assets/images/logo.png";
+
 function Nav() {
   const { setAuth } = useAuth();
   const [showProfileMenu, setShowProfileMenu] = useState(false);
@@ -33,11 +35,7 @@ function Nav() {
     <div className="header">
       <div className="nav-visible">
         <ul>
-          <img
-            src="https://www.wanimo.com/veterinaire/wp-content/uploads/2015/07/images_articles_lapin_lapin-regarde@2x.jpg"
-            alt="logo"
-            className="logo"
-          />
+          <img src={Logo} alt="logo" className="logo" />
           <li className="nav-li">
             <Link to="/">
               {" "}
@@ -116,9 +114,11 @@ function Nav() {
           {!sub ? (
             <>
               <Link to="/register">
-                <button type="button">Inscription</button>
+                <button type="button" onClick={toggleProfileMenu}>
+                  Inscription
+                </button>
               </Link>
-              <Link to="/login">
+              <Link to="/login" onClick={toggleProfileMenu}>
                 <button type="button" className="btn-secondary">
                   Connexion
                 </button>
@@ -126,7 +126,11 @@ function Nav() {
             </>
           ) : (
             <Link to="/" onClick={clearCookies}>
-              <button type="button" className="btn-secondary">
+              <button
+                type="button"
+                className="btn-secondary"
+                onClick={toggleProfileMenu}
+              >
                 Déconnexion
               </button>
             </Link>
@@ -134,14 +138,22 @@ function Nav() {
 
           {sub && role !== 2 && (
             <Link to="/admin">
-              <button type="button" className="btn-secondary">
+              <button
+                type="button"
+                className="btn-secondary"
+                onClick={toggleProfileMenu}
+              >
                 Administrateur
               </button>
             </Link>
           )}
           {sub && role !== 1 && (
             <Link to="/admin">
-              <button type="button" className="btn-secondary">
+              <button
+                type="button"
+                className="btn-secondary"
+                onClick={toggleProfileMenu}
+              >
                 Profil
               </button>
             </Link>
