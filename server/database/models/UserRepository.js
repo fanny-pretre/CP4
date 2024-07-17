@@ -13,12 +13,12 @@ class UserRepository extends AbstractRepository {
     // Execute the SQL INSERT query to add a new user to the "user" table
 
     const [result] = await this.database.query(
-      `insert into ${this.table} (firstname, lastname, email, password, address, zip_code, city, telephone, role_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      `insert into ${this.table} (firstname, lastname, email, hashed_password, address, zip_code, city, telephone, role_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         user.firstname,
         user.lastname,
         user.email,
-        user.password,
+        user.hashedPassword,
         user.address,
         user.zip_code,
         user.city,
@@ -50,6 +50,17 @@ class UserRepository extends AbstractRepository {
 
     // Return the array of users
     return rows;
+  }
+
+  async readByEmailWithPassword(email) {
+    // Execute the SQL SELECT query to retrieve a specific user by its email
+    const [rows] = await this.database.query(
+      `select * from ${this.table} where email = ?`,
+      [email]
+    );
+
+    // Return the first row of the result, which represents the user
+    return rows[0];
   }
 
   // The U of CRUD - Update operation

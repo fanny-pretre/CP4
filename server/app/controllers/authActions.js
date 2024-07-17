@@ -34,7 +34,6 @@ const login = async (req, res, next) => {
           role: user.role_id,
           firstname: user.firstname,
           lastname: user.lastname,
-          avatar: user.avatar,
         },
         process.env.APP_SECRET,
         { expiresIn: "1h" }
