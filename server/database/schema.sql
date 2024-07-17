@@ -78,8 +78,8 @@ INSERT INTO cohabitation (human, cat, dog) VALUES
 ('+++', 'ok', 'ok');
 
 INSERT INTO user (firstname, lastname, email, hashed_password, telephone, address, zip_code, city, role_id) VALUES
-('Jean', 'Dupont', 'jean@example.com', 'Azerty123@', '123-456-7890', '123 Rue Principale', '12345', 'Ville A', 1),
-('Marie', 'Martin', 'marie@example.com', 'Azerty123@', '987-654-3210', '456 Rue Elm', '54321', 'Ville B', 2);
+('Fanny', 'Admin', 'admin@example.com', '$argon2id$v=19$m=19456,t=2,p=1$YuTUonvj6kDs1gtygYcjpg$fDUntM/0R/oJyXsNf0z0r+jepTG58vMfGkf7Bsjwqig', '123-456-7890', '123 Rue Principale', '12345', 'Ville A', 1),
+('Marie', 'Martin', 'marie@example.com', '$argon2id$v=19$m=19456,t=2,p=1$YuTUonvj6kDs1gtygYcjpg$fDUntM/0R/oJyXsNf0z0r+jepTG58vMfGkf7Bsjwqig', '987-654-3210', '456 Rue Elm', '54321', 'Ville B', 2);
 
 INSERT INTO animal (name, image, age, gender, story, coming_date, status, personality, adoption_date, race_id, health_id, cohabitation_id, user_id) VALUES
 ('Panpan', 'https://botanic-botanic-storage.omn.proximis.com/Imagestorage/images/2560/1600/6540c9bfad436_lapin_dresse_sur_ses_pattes_oreilles.jpg', 3, 'M', 'Trouvé abandonné', '2023-01-15', 'Disponible', 'Amical et joueur', NULL, 1, 1, 1, 1),
