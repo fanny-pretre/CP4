@@ -37,19 +37,40 @@ const read = async (req, res, next) => {
 // The E of BREAD - Edit (Update) operation
 // This operation is not yet implemented
 
-// The A of BREAD - Add (Create) operation
 const add = async (req, res, next) => {
-  // Extract the animal data from the request body
   const animal = req.body;
 
   try {
-    // Insert the animal into the database
-    const insertId = await tables.animal.create(animal);
+    // Vérifiez que les données de santé sont présentes et non vides
 
-    // Respond with HTTP 201 (Created) and the ID of the newly inserted animal
+    // Insertion dans la table health
+    const healthId = await tables.health.create({
+      sterilisation: animal.sterilisation,
+      vaccination: animal.vaccination,
+      identification: animal.identification,
+      decontamination: animal.decontamination,
+      background: animal.background,
+      observations: animal.observations,
+    });
+
+    // Insertion dans la table animal
+    const insertId = await tables.animal.create({
+      image: animal.image,
+      name: animal.name,
+      age: animal.age,
+      gender: animal.gender,
+      story: animal.story,
+      coming_date: animal.coming_date,
+      status: animal.status,
+      personality: animal.personality,
+      adoption_date: animal.adoption_date,
+      race_id: animal.race_id,
+      health_id: healthId,
+      cohabitation_id: animal.cohabitation_id,
+    });
+
     res.status(201).json({ insertId });
   } catch (err) {
-    // Pass any errors to the error-handling middleware
     next(err);
   }
 };

@@ -15,8 +15,8 @@ class AnimalRepository extends AbstractRepository {
       const query = `
         INSERT INTO ${this.table} (
           image, name, age, gender, story, coming_date, status,
-          personality, race_id, health_id, cohabitation_id 
-        ) VALUES (?, ?, ?, ?, ?,  ?, ?, ?, ?, 1, 1)
+          personality, race_id, health_id  
+        ) VALUES (?, ?, ?, ?, ?,  ?, ?, ?, ?, ?)
       `;
 
       const [result] = await this.database.query(query, [
@@ -30,7 +30,6 @@ class AnimalRepository extends AbstractRepository {
         animal.personality,
         animal.race_id,
         animal.health_id,
-        animal.cohabitation_id,
       ]);
 
       // Return the ID of the newly inserted animal
