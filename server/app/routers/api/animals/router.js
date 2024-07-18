@@ -12,6 +12,7 @@ const {
   browseAdoptable,
   browseAdopted,
   read,
+  readAllInfos,
   add,
   edit,
   destroy,
@@ -26,6 +27,9 @@ router.get("/adopted", browseAdopted);
 
 // Route to get a specific animal by ID
 router.get("/:id", read);
+
+// Route to get a specific animal by ID
+router.get("/:id/infos", readAllInfos);
 
 // Route to add a new animal
 router.post("/", add);

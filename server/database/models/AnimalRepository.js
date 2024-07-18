@@ -54,6 +54,50 @@ class AnimalRepository extends AbstractRepository {
     return rows[0];
   }
 
+  async readAllInfos(id) {
+    // Execute the SQL SELECT query to retrieve a specific animal by its ID with related info
+    const [rows] = await this.database.query(
+      `SELECT 
+         a.id,
+         a.name,
+         a.image,
+         a.age,
+         a.gender,
+         a.story,
+         a.coming_date,
+         a.status,
+         a.personality,
+         a.adoption_date,
+         r.name AS race_name,
+         h.sterilisation,
+         h.vaccination,
+         h.identification,
+         h.decontamination,
+         h.background,
+         h.observations,
+         c.human,
+         c.cat,
+         c.dog,
+         u.firstname AS owner_firstname,
+         u.lastname AS owner_lastname,
+         u.email AS owner_email,
+         u.telephone AS owner_telephone,
+         u.address AS owner_address,
+         u.zip_code AS owner_zip_code,
+         u.city AS owner_city
+       FROM animal a
+       INNER JOIN race r ON a.race_id = r.id
+       INNER JOIN health h ON a.health_id = h.id
+       INNER JOIN cohabitation c ON a.cohabitation_id = c.id
+       INNER JOIN user u ON a.user_id = u.id
+       WHERE a.id = ?`,
+      [id]
+    );
+
+    // Return the first row of the result, which represents the animal with related info
+    return rows[0];
+  }
+
   async readAll() {
     // Execute the SQL SELECT query to retrieve all users from the "animal" table
     const [rows] = await this.database.query(`select * from ${this.table}`);

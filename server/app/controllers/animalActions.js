@@ -62,6 +62,25 @@ const read = async (req, res, next) => {
   }
 };
 
+// The R of BREAD - Read operation
+const readAllInfos = async (req, res, next) => {
+  try {
+    // Fetch a specific animal from the database based on the provided ID
+    const animal = await tables.animal.readAllInfos(req.params.id);
+
+    // If the animal is not found, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the animal in JSON format
+    if (animal == null) {
+      res.sendStatus(404);
+    } else {
+      res.json(animal);
+    }
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
 // The E of BREAD - Edit (Update) operation
 // This operation is not yet implemented
 const edit = async (req, res, next) => {
@@ -147,6 +166,7 @@ module.exports = {
   browseAdoptable,
   browseAdopted,
   read,
+  readAllInfos,
   edit,
   add,
   destroy,

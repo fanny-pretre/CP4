@@ -148,7 +148,7 @@ function Nav() {
             </Link>
           )}
           {sub && role !== 1 && (
-            <Link to="/admin">
+            <Link to="/profil">
               <button
                 type="button"
                 className="btn-secondary"

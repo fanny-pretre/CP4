@@ -35,7 +35,7 @@ function Connexion() {
       if (response.status === 200) {
         const authData = await Cookies.get("authData");
         setAuth(authData);
-        navigate("/admin");
+        navigate("/");
       } else {
         // Log des détails de la réponse en cas d'échec
         console.info(response);

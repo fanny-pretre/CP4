@@ -45,6 +45,11 @@ const animalsRouter = require("./animals/router");
 
 router.use("/animals", animalsRouter);
 
+// Contact
+const contactsRouter = require("./contacts/router");
+
+router.use("/contacts", contactsRouter);
+
 /* ************************************************************************* */
 
 module.exports = router;
