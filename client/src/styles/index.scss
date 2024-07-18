@@ -93,8 +93,10 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+  padding: 0;
+
   .animal-item {
-    max-width: 400px;
+    width: 350px;
     background-color: #fff; /* Couleur de fond */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre légère */
     overflow: hidden;
@@ -187,6 +189,11 @@ h2 {
     border-color: variables.$info-color; /* Changer la couleur de la bordure lors du focus */
     outline: none; /* Supprime la bordure par défaut du focus */
   }
+}
+
+.strong {
+  margin: 1rem 0rem;
+  font-weight: 600;
 }
 
 @media screen and (min-width: 768px) {

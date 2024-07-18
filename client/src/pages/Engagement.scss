@@ -10,9 +10,9 @@
   }
 }
 
-ul {
-  margin-bottom: 20px;
-  padding-left: 20px;
+.engagement-list {
+  display: flex;
+  flex-direction: column;
 }
 
 .engagement-item {
@@ -30,5 +30,16 @@ ul {
     background-color: variables.$secondary-color;
     color: white;
     cursor: default;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .engagement-list {
+    display: flex;
+    flex-direction: row;
+  }
+  .engagement-item {
+    height: 9rem;
+    width: 20rem;
   }
 }

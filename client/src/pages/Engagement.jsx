@@ -20,7 +20,7 @@ function Engagement() {
             fill="#8c034e"
           />
         </svg>{" "}
-        Comment vous pouvez vous engager :
+        Comment s'engager ?
       </h2>
       <ul className="engagement-list">
         <li className="engagement-item">
