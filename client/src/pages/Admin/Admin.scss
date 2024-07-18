@@ -18,9 +18,11 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   padding: 0.5rem;
   color: black;
+  border: solid 0.3rem white;
   &:hover {
     border: solid 0.3rem variables.$fifth-color;
     color: black;
+    box-sizing: border-box;
   }
 }
 
