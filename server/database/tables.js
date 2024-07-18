@@ -6,6 +6,7 @@ const HealthRepository = require("./models/HealthRepository");
 const CohabitationRepository = require("./models/CohabitationRepository");
 const UserRepository = require("./models/UserRepository");
 const AnimalRepository = require("./models/AnimalRepository");
+const ContactRepository = require("./models/ContactRepository");
 
 // Create an empty object to hold data repositories for different tables
 const tables = {};
@@ -22,6 +23,7 @@ tables.health = new HealthRepository();
 tables.cohabitation = new CohabitationRepository();
 tables.user = new UserRepository();
 tables.animal = new AnimalRepository();
+tables.contact = new ContactRepository();
 
 /* ************************************************************************* */
 

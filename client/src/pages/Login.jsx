@@ -1,5 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import Cookies from "js-cookie";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
@@ -35,10 +37,33 @@ function Connexion() {
       if (response.status === 200) {
         const authData = await Cookies.get("authData");
         setAuth(authData);
-        navigate("/");
+
+        toast(" 🐇 Connexion réussie !", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+        setTimeout(() => {
+          navigate("/");
+        }, 1500);
       } else {
         // Log des détails de la réponse en cas d'échec
         console.info(response);
+        toast.error(" 🐇 Erreur lors de la connexion !", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       }
     } catch (err) {
       // Log des erreurs possibles
@@ -47,7 +72,20 @@ function Connexion() {
   };
 
   return (
-    <section>
+    <section className="connexion">
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      <ToastContainer />
       <h1>Connexion</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -71,7 +109,7 @@ function Connexion() {
 
         <button type="submit">Me connecter</button>
       </form>
-      <Link to="/inscription">Pas encore de compte</Link>
+      <Link to="/register">Pas encore de compte</Link>
     </section>
   );
 }

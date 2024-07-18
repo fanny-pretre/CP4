@@ -1,0 +1,70 @@
+.animal-details {
+  display: flex;
+  flex-direction: column;
+
+  .contact-request {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    a {
+      display: inline-block;
+      text-decoration: none;
+      color: variables.$secondary-color;
+      font-weight: 800;
+      padding: 5px;
+      transition: color 0.3s;
+
+      &:hover {
+        color: #666;
+      }
+    }
+  }
+}
+
+.animal-info {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+
+  img {
+    width: 100%;
+    height: auto;
+    margin-right: 20px;
+  }
+
+  .animal-label {
+    display: flex;
+    justify-content: flex-end;
+    width: auto;
+    margin: 1rem;
+    p {
+      background-color: variables.$info-color;
+      font-size: 1.2rem;
+      padding: 0.5rem;
+      color: white;
+    }
+  }
+
+  .details {
+    flex: 1;
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.animal-header {
+  h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+}

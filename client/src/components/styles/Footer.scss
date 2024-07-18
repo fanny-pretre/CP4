@@ -1,0 +1,57 @@
+// styles/Footer.scss
+
+.footer {
+  background-color: #f0f0f0;
+  padding: 20px 0;
+  color: black;
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+  width: 100vw;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+  .footer-design {
+    img {
+      width: 100px;
+    }
+  }
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .footer-adresse {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+
+  li {
+    margin-bottom: 5px;
+    color: #666;
+    cursor: pointer;
+
+    &:hover {
+      color: variables.$secondary-color;
+    }
+  }
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  color: #666;
+}

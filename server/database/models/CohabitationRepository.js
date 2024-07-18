@@ -12,8 +12,8 @@ class CohabitationRepository extends AbstractRepository {
   async create(cohabitation) {
     // Execute the SQL INSERT query to add a new cohabitation to the "cohabitation" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (title, user_id) values (?, ?)`,
-      [cohabitation.title, cohabitation.user_id]
+      `insert into ${this.table} (human, cat, dog) values (?, ?, ?)`,
+      [cohabitation.human, cohabitation.cat, cohabitation.dog]
     );
 
     // Return the ID of the newly inserted cohabitation
@@ -43,10 +43,6 @@ class CohabitationRepository extends AbstractRepository {
 
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing cohabitation
-
-  // async update(cohabitation) {
-  //   ...
-  // }
 
   // The D of CRUD - Delete operation
   // TODO: Implement the delete operation to remove an cohabitation by its ID

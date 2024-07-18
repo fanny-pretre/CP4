@@ -1,3 +1,5 @@
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -61,10 +63,32 @@ function Inscription() {
       );
       // Redirection vers la page de connexion si la création réussit
       if (response.status === 201) {
-        navigate("/login");
+        toast(" 🐇 Inscription réussie !", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+        setTimeout(() => {
+          navigate("/login");
+        }, 1500);
       } else {
         // Log des détails de la réponse en cas d'échec
         console.info(response);
+        toast.error(" 🐇 Erreur lors de l'inscription !", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       }
     } catch (err) {
       // Log des erreurs possibles
@@ -73,8 +97,21 @@ function Inscription() {
   };
 
   return (
-    <section>
-      <h1>Inscrivez-vous pour en savoir plus </h1>
+    <section className="inscription">
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      <ToastContainer />
+      <h1>Inscription </h1>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* eslint-disable react/jsx-props-no-spreading */}
@@ -139,43 +176,42 @@ function Inscription() {
                 "Êtes-vous sûr d'avoir écrit correctement votre email ?"}
             </p>
           )}
-          <div className="form-group">
-            <label htmlFor="password">Mot de passe</label>{" "}
-            <input
-              type="password"
-              id="password"
-              {...register("password", {
-                required: true,
-                validate: validatePassword,
-              })}
-              onBlur={() => trigger("password")}
-            />
-            {errors.password && (
-              <p role="alert">
-                {errors.password.type === "required" &&
-                  "Le mot de passe est obligatoire"}
-                {errors.password.type === "validate" && errors.password.message}
-              </p>
-            )}
-          </div>
-          <div className="form-group">
-            <label htmlFor="confirmPassword">Confirmer le mot de passe</label>
-            <input
-              type="password"
-              id="confirmPassword"
-              {...register("confirmPassword", {
-                required: "La confirmation du mot de passe est obligatoire",
-                validate: (value) =>
-                  value === password ||
-                  "Les mots de passe ne correspondent pas",
-              })}
-              onBlur={() => trigger("confirmPassword")}
-            />
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Mot de passe</label>{" "}
+          <input
+            type="password"
+            id="password"
+            {...register("password", {
+              required: true,
+              validate: validatePassword,
+            })}
+            onBlur={() => trigger("password")}
+          />
+          {errors.password && (
+            <p role="alert">
+              {errors.password.type === "required" &&
+                "Le mot de passe est obligatoire"}
+              {errors.password.type === "validate" && errors.password.message}
+            </p>
+          )}
+        </div>
+        <div className="form-group">
+          <label htmlFor="confirmPassword">Confirmer le mot de passe</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            {...register("confirmPassword", {
+              required: "La confirmation du mot de passe est obligatoire",
+              validate: (value) =>
+                value === password || "Les mots de passe ne correspondent pas",
+            })}
+            onBlur={() => trigger("confirmPassword")}
+          />
 
-            {errors.confirmPassword && (
-              <p role="alert">{errors.confirmPassword.message}</p>
-            )}
-          </div>
+          {errors.confirmPassword && (
+            <p role="alert">{errors.confirmPassword.message}</p>
+          )}
         </div>
 
         <div className="form-group">
@@ -233,30 +269,30 @@ function Inscription() {
               </p>
             )}
           </div>
-          <div className="form-group">
-            <label htmlFor="telephone">Téléphone</label>
-            <input
-              type="telephone"
-              id="telephone"
-              {...register("telephone", {
-                required: true,
-              })}
-              // Validation au moment de la perte du focus
-              onBlur={() => trigger("telephone")}
-            />
+        </div>
+        <div className="form-group">
+          <label htmlFor="telephone">Téléphone</label>
+          <input
+            type="telephone"
+            id="telephone"
+            {...register("telephone", {
+              required: true,
+            })}
+            // Validation au moment de la perte du focus
+            onBlur={() => trigger("telephone")}
+          />
 
-            {errors.telephone && (
-              <p role="alert">
-                {errors.telephone.type === "required" &&
-                  "Le téléphone est obligatoire"}
-              </p>
-            )}
-          </div>
+          {errors.telephone && (
+            <p role="alert">
+              {errors.telephone.type === "required" &&
+                "Le téléphone est obligatoire"}
+            </p>
+          )}
         </div>
         <button type="submit">Créer mon compte</button>
       </form>
 
-      <Link to="/connexion"> J'ai déjà un compte </Link>
+      <Link to="/login"> J'ai déjà un compte </Link>
     </section>
   );
 }

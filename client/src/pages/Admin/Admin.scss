@@ -1,0 +1,72 @@
+.admin-Content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 1rem 0;
+}
+
+.admin-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  a {
+    width: 100%;
+  }
+}
+
+.admin-list-items {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  padding: 0.5rem;
+  color: black;
+  &:hover {
+    border: solid 0.3rem variables.$fifth-color;
+    color: black;
+  }
+}
+
+.admin-item {
+  display: flex;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  padding: 0.5rem 1.5rem;
+  justify-content: space-between;
+  align-items: center;
+  img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.admin-item-2 {
+  display: flex;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  padding: 0.5rem;
+  align-items: center;
+  gap: 2rem;
+  color: black;
+  &:hover {
+    color: black;
+    cursor: default;
+  }
+}
+
+.profile-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.admin-animals-infos {
+  color: black;
+}
+
+.date-filtre {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  gap: 2rem;
+  margin: 1rem 0;
+}

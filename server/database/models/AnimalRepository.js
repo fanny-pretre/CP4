@@ -10,14 +10,35 @@ class AnimalRepository extends AbstractRepository {
   // The C of CRUD - Create operation
 
   async create(animal) {
-    // Execute the SQL INSERT query to add a new animal to the "animal" table
-    const [result] = await this.database.query(
-      `insert into ${this.table} (title, user_id) values (?, ?)`,
-      [animal.title, animal.user_id]
-    );
+    try {
+      // Execute the SQL INSERT query to add a new animal to the "animal" table
+      const query = `
+        INSERT INTO ${this.table} (
+          image, name, age, gender, story, coming_date, status,
+          personality, race_id, health_id, cohabitation_id   
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      `;
 
-    // Return the ID of the newly inserted animal
-    return result.insertId;
+      const [result] = await this.database.query(query, [
+        animal.image,
+        animal.name,
+        animal.age,
+        animal.gender,
+        animal.story,
+        animal.coming_date,
+        animal.status,
+        animal.personality,
+        animal.race_id,
+        animal.health_id,
+        animal.cohabitation_id,
+      ]);
+
+      // Return the ID of the newly inserted animal
+      return result.insertId;
+    } catch (error) {
+      // Handle any errors that occur during the database operation
+      throw new Error(`Error inserting animal: ${error.message}`);
+    }
   }
 
   // The Rs of CRUD - Read operations
@@ -33,6 +54,50 @@ class AnimalRepository extends AbstractRepository {
     return rows[0];
   }
 
+  async readAllInfos(id) {
+    // Execute the SQL SELECT query to retrieve a specific animal by its ID with related info
+    const [rows] = await this.database.query(
+      `SELECT 
+         a.id,
+         a.name,
+         a.image,
+         a.age,
+         a.gender,
+         a.story,
+         a.coming_date,
+         a.status,
+         a.personality,
+         a.adoption_date,
+         r.name AS race_name,
+         h.sterilisation,
+         h.vaccination,
+         h.identification,
+         h.decontamination,
+         h.background,
+         h.observations,
+         c.human,
+         c.cat,
+         c.dog,
+         u.firstname AS owner_firstname,
+         u.lastname AS owner_lastname,
+         u.email AS owner_email,
+         u.telephone AS owner_telephone,
+         u.address AS owner_address,
+         u.zip_code AS owner_zip_code,
+         u.city AS owner_city
+       FROM animal a
+       INNER JOIN race r ON a.race_id = r.id
+       INNER JOIN health h ON a.health_id = h.id
+       INNER JOIN cohabitation c ON a.cohabitation_id = c.id
+       INNER JOIN user u ON a.user_id = u.id
+       WHERE a.id = ?`,
+      [id]
+    );
+
+    // Return the first row of the result, which represents the animal with related info
+    return rows[0];
+  }
+
   async readAll() {
     // Execute the SQL SELECT query to retrieve all users from the "animal" table
     const [rows] = await this.database.query(`select * from ${this.table}`);
@@ -41,19 +106,64 @@ class AnimalRepository extends AbstractRepository {
     return rows;
   }
 
-  // The U of CRUD - Update operation
-  // TODO: Implement the update operation to modify an existing animal
+  async readAllAdoptable() {
+    const [rows] = await this.database.query(
+      `SELECT * FROM ${this.table} WHERE status = ?`,
+      ["à l'adoption"]
+    );
 
-  // async update(animal) {
-  //   ...
-  // }
+    // Return the array of animals
+    return rows;
+  }
+
+  async readAllAdopted() {
+    const [rows] = await this.database.query(
+      `SELECT * FROM ${this.table} WHERE status = ?`,
+      ["adopté"]
+    );
+
+    // Return the array of animals
+    return rows;
+  }
+
+  async update(animal) {
+    // Execute the SQL UPDATE query to update a specific animal
+
+    const [result] = await this.database.query(
+      `update ${this.table} set image = ?, name = ?, age = ?, gender = ?, story = ?, status = ?, personality = ?, race_id = ? where id = ?`,
+
+      [
+        animal.image,
+        animal.name,
+        animal.age,
+        animal.gender,
+        animal.story,
+        animal.status,
+        animal.personality,
+        animal.race_id,
+        animal.id,
+      ]
+    );
+
+    // Return how many rows were affected
+    console.info(result.affectedRows);
+    return result.affectedRows;
+  }
 
   // The D of CRUD - Delete operation
-  // TODO: Implement the delete operation to remove an animal by its ID
+  async delete(id) {
+    // Execute the SQL DELETE query to delete a specific animal
 
-  // async delete(id) {
-  //   ...
-  // }
+    const [result] = await this.database.query(
+      `delete from ${this.table} where id = ?`,
+
+      [id]
+    );
+
+    // Return how many rows were affected
+
+    return result.affectedRows;
+  }
 }
 
 module.exports = AnimalRepository;

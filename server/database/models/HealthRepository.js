@@ -12,8 +12,15 @@ class HealthRepository extends AbstractRepository {
   async create(health) {
     // Execute the SQL INSERT query to add a new health to the "health" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (title, user_id) values (?, ?)`,
-      [health.title, health.user_id]
+      `insert into ${this.table} (sterilisation, vaccination, identification, decontamination, background, observations) values (?, ?, ?, ?, ?, ?)`,
+      [
+        health.sterilisation,
+        health.vaccination,
+        health.identification,
+        health.decontamination,
+        health.background,
+        health.observations,
+      ]
     );
 
     // Return the ID of the newly inserted health
