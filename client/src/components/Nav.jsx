@@ -87,12 +87,10 @@ function Nav() {
             S'engager
           </Link>
         </li> */}
-        </ul>
-        <li className="nav-button">
           <button
-            type="button"
             className="nav-button"
             onClick={toggleProfileMenu}
+            type="button"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -107,7 +105,7 @@ function Nav() {
             </svg>
             Profil
           </button>
-        </li>
+        </ul>
       </div>
       {showProfileMenu && (
         <div className="nav-open">

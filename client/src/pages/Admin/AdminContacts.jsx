@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 function AdminContacts() {
   const [contacts, setContacts] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [searchDate, setSearchDate] = useState("");
 
   useEffect(() => {
     const fetchAllInfos = async () => {
@@ -24,11 +25,28 @@ function AdminContacts() {
     fetchAllInfos();
   }, []);
 
-  console.info(contacts);
-
   if (loading) return <p>Chargement...</p>;
 
   if (!contacts) return <p> Pas de demande de contact</p>;
+
+  const handleSearchDateChange = (event) => {
+    setSearchDate(event.target.value);
+  };
+
+  const filterContactsByDate = (params) => {
+    if (!searchDate) return params;
+    const searchDateObj = new Date(searchDate);
+    return contacts.filter((contact) => {
+      const contactDate = new Date(contact.request_date);
+      return (
+        contactDate.getFullYear() === searchDateObj.getFullYear() &&
+        contactDate.getMonth() === searchDateObj.getMonth() &&
+        contactDate.getDate() === searchDateObj.getDate()
+      );
+    });
+  };
+
+  const filteredContacts = filterContactsByDate(contacts);
 
   return (
     <div className="contact-contacts">
@@ -45,8 +63,18 @@ function AdminContacts() {
         </Link>
       </div>
       <h1>Mes demandes de contacts</h1>
+      <div className="date-filtre">
+        <p> Filtrer par date</p>
+        <input
+          type="date"
+          value={searchDate}
+          onChange={handleSearchDateChange}
+          className="search-date"
+          placeholder="Rechercher par date"
+        />
+      </div>
       <ul className="admin-list">
-        {contacts.map((contact) => (
+        {filteredContacts.map((contact) => (
           <li key={contact.id} className="admin-item-2">
             <div className="contact-header">
               <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">

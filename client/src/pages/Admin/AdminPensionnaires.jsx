@@ -6,6 +6,15 @@ function AdminPensionnaires() {
   // Fetch initial race
   const [animals, setAnimals] = useState([]);
   const [races, setRaces] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredAnimals = animals.filter((animal) =>
+    `${animal.name}`.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   useEffect(() => {
     const fetchAnimalsAndRaces = async () => {
@@ -331,8 +340,15 @@ function AdminPensionnaires() {
       </form>
 
       <h1> Liste des pensionnaires </h1>
+      <input
+        type="text"
+        placeholder="Rechercher des pensionnaires"
+        value={searchTerm}
+        onChange={handleSearchChange}
+        className="search-bar"
+      />
       <ul className="admin-list">
-        {animals.map((animal) => (
+        {filteredAnimals.map((animal) => (
           <Link to={`/admin/pensionnaires/edit/${animal.id}`} key={animal.id}>
             <li className="admin-item">
               <img src={animal.image} alt={`${animal.name}`} />

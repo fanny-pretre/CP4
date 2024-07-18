@@ -5,6 +5,17 @@ import { Link } from "react-router-dom";
 function AdminUtilisateurs() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredUsers = users.filter((user) =>
+    `${user.firstname} ${user.lastname} ${user.email}`
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase())
+  );
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -28,7 +39,7 @@ function AdminUtilisateurs() {
   }
 
   return (
-    <div>
+    <div className="admin-section">
       <div className="previous">
         <Link to="/admin">
           <svg
@@ -43,7 +54,14 @@ function AdminUtilisateurs() {
       </div>
       <h1>Liste des utilisateurs</h1>
       <ul className="admin-list">
-        {users.map((user) => (
+        <input
+          type="text"
+          placeholder="Rechercher des utilisateurs"
+          value={searchTerm}
+          onChange={handleSearchChange}
+          className="search-bar"
+        />
+        {filteredUsers.map((user) => (
           <li className="admin-item-2" key={user.id}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -63,6 +81,7 @@ function AdminUtilisateurs() {
                 {user.firstname} {user.lastname}{" "}
               </h3>
               <p>{user.email} </p>
+              <p>{user.telephone} </p>
             </div>
           </li>
         ))}

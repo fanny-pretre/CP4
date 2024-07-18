@@ -17,6 +17,7 @@ import AdminPensionnairesEdit from "./pages/Admin/AdminPensionnairesEdit";
 import AdminUtilisateurs from "./pages/Admin/AdminUtilisateurs";
 import AdminContacts from "./pages/Admin/AdminContacts";
 import Profil from "./pages/Profil/Profil";
+import Engagement from "./pages/Engagement";
 
 import App from "./App";
 
@@ -76,6 +77,10 @@ const router = createBrowserRouter([
       {
         path: "/profil",
         element: <Profil />,
+      },
+      {
+        path: "/engagement",
+        element: <Engagement />,
       },
     ],
   },
