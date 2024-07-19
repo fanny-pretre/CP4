@@ -42,7 +42,7 @@ Création du fichier d'environnement 📁
 
 Le Terrier est un site prototype réalisé en 48 heures dans le cadre de ma formation à la Wild Code School. Inspiré de vrais sites comme celui de la [Maison de Locky](https://la-maison-de-locky.assoconnect.com/page/1439263-accueil), une association de ma région, j'ai créé ce projet pour mettre en pratique mes compétences en développement web et valoriser l'engagement des bénévoles et associations de protection des animaux.
 
-J'adresse également mes remerciements à mes instructeurs et mentors ([Anthony Gorski](https://fr.linkedin.com/in/anthony-gorski) and [Samuel Faber](https://www.linkedin.com/in/samuelfaberdev/)) de la Wild Code School pour leurs précieux conseils et leur soutien tout au long de ma formation.
+J'adresse mes remerciements à mes instructeurs et mentors ([Anthony Gorski](https://fr.linkedin.com/in/anthony-gorski) and [Samuel Faber](https://www.linkedin.com/in/samuelfaberdev/)) de la Wild Code School pour leurs précieux conseils et leur soutien tout au long de ma formation.
 
 <br>
 <br>
