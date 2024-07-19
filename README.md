@@ -1,6 +1,6 @@
 <h1 align="center"> 🐇 Bienvenue sur le site du Terrier ! 🐇 </h1>
 <p align="center">
-<img  src="./client/src/assets/images/Gif.gif" alt="Globe-Guide-Gif" />
+<img  src="./client/src/assets/images/Header.png" alt="Header" />
 </p>
 <br>
 
