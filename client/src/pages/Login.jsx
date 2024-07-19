@@ -12,8 +12,6 @@ function Connexion() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  console.info(email, password);
-
   // Hook pour la navigation
   const navigate = useNavigate();
 
